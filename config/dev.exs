@@ -36,8 +36,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :awesome_elixir, AwesomeElixir.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "anatoly",
+  password: "12asizez",
   database: "awesome_elixir_dev",
   hostname: "localhost",
   pool_size: 10
