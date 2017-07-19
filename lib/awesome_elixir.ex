@@ -14,6 +14,7 @@ defmodule AwesomeElixir do
       supervisor(AwesomeElixir.Endpoint, []),
       # Start your own worker by calling: AwesomeElixir.Worker.start_link(arg1, arg2, arg3)
       # worker(AwesomeElixir.Worker, [arg1, arg2, arg3]),
+      worker(AwesomeElixir.Tasks.UpdateData, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
