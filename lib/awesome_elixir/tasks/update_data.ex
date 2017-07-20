@@ -1,5 +1,8 @@
 defmodule AwesomeElixir.Tasks.UpdateData do
   use GenServer
+  alias AwesomeElixir.GitHub
+  alias AwesomeElixir.ReadmeParser
+  alias AwesomeElixir.Saver
 
   def start_link do
     GenServer.start_link(__MODULE__, %{})
@@ -22,6 +25,12 @@ defmodule AwesomeElixir.Tasks.UpdateData do
   end
 
   def update() do
-    IO.puts "Updated"
+    GitHub.start
+    GitHub.get!("/repos/h4cc/awesome-elixir/readme").body[:content]
+    |> Base.decode64!(ignore: :whitespace)
+    |> Earmark.parse
+    |> ReadmeParser.get_datas
+    |> IO.inspect
   end
+
 end
