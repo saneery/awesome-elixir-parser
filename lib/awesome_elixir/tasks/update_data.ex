@@ -21,7 +21,7 @@ defmodule AwesomeElixir.Tasks.UpdateData do
   end
 
   defp schedule_work() do
-    Process.send_after(self(), :work, 60 * 1000)
+    Process.send_after(self(), :work, 24 * 60 * 60 * 1000)
   end
 
   def update() do
@@ -30,7 +30,8 @@ defmodule AwesomeElixir.Tasks.UpdateData do
     |> Base.decode64!(ignore: :whitespace)
     |> Earmark.parse
     |> ReadmeParser.get_datas
-    |> IO.inspect
+    |> Saver.save
+    IO.puts "--------------------------------------------DONE------------------------------------"
   end
 
 end

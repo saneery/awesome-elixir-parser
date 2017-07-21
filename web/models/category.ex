@@ -4,6 +4,7 @@ defmodule AwesomeElixir.Category do
   schema "categories" do
     field :name, :string
     field :description, :string
+    has_many :libraries, AwesomeElixir.Library, on_delete: :delete_all
 
     timestamps()
   end

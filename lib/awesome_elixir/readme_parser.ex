@@ -1,7 +1,10 @@
 defmodule AwesomeElixir.ReadmeParser do
 
   def get_datas({collection, _}) do
+    res_head = Enum.find_index(collection, &match?(%Earmark.Block.Heading{content: "Resources"}, &1))
+
     collection
+    |> Enum.slice(0, res_head)
     |> Enum.map(&get_category(&1, collection))
     |> Enum.filter(fn(el) -> el end) #почистить лист от nil
   end

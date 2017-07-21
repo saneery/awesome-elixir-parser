@@ -17,6 +17,6 @@ defmodule AwesomeElixir.Library do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:name, :description, :stars, :last_commit])
-    |> validate_required([:name, :description, :stars, :last_commit])
+    |> validate_required([:name, :stars, :last_commit])
   end
 end
