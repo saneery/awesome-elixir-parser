@@ -9,6 +9,7 @@ defmodule AwesomeElixir.Tasks.UpdateData do
   end
 
   def init(state) do
+    update()
     schedule_work()
     {:ok, state}
   end
@@ -25,12 +26,12 @@ defmodule AwesomeElixir.Tasks.UpdateData do
 
   def update() do
     GitHub.start
-    GitHub.get!("/repos/h4cc/awesome-elixir/readme").body[:content]
+    GitHub.get!("/repos/h4cc/awesome-elixir/readme")
     |> Base.decode64!(ignore: :whitespace)
     |> Earmark.parse
     |> ReadmeParser.get_datas
     |> Saver.save
-    IO.puts "--------------------------------------------DONE------------------------------------"
+    IO.puts "------------------------DONE--------------------------------"
   end
 
 end
