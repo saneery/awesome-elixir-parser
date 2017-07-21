@@ -33,7 +33,8 @@ defmodule AwesomeElixir.Saver do
       end
       date2 = DateTime.utc_now |> DateTime.to_unix
       days = round((date2 - date1)/86400)
-      Ecto.Changeset.change(%Library{}, name: library, stars: repo.body[:stargazers_count], last_commit: days)
+      name = Earmark.as_html! library
+      Ecto.Changeset.change(%Library{}, name: name, stars: repo.body[:stargazers_count], last_commit: days)
     end
   end
 

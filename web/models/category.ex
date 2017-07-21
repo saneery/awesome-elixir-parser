@@ -1,6 +1,8 @@
 defmodule AwesomeElixir.Category do
   use AwesomeElixir.Web, :model
 
+  @derive {Poison.Encoder, only: [:id, :name, :libraries, :description]}
+
   schema "categories" do
     field :name, :string
     field :description, :string

@@ -20,7 +20,8 @@ defmodule AwesomeElixir.ReadmeParser do
     lnb = element.lnb + 1
     element_index = Enum.find_index collection, &match?(%Earmark.Block.Para{lnb: x} when x == lnb, &1)
     element = Enum.fetch!(collection, element_index)
-    block = Map.put block, :description, Enum.fetch!(element.lines, 0)
+    description = Enum.fetch!(element.lines, 0) |>  Earmark.as_html!
+    block = Map.put block, :description, description
     get_library_list(element_index + 1, collection, block)
   end
 

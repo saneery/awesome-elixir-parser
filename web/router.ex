@@ -20,7 +20,10 @@ defmodule AwesomeElixir.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", AwesomeElixir do
-  #   pipe_through :api
-  # end
+  scope "/api", AwesomeElixir do
+    pipe_through :api
+
+    get "/libraries", CategoryController, :index
+
+  end
 end

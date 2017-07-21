@@ -67,6 +67,8 @@ exports.config = {
   npm: {
     enabled: true,
     globals: {
+      $: 'jquery',
+      jQuery: 'jquery',
       React: 'react',
       ReactDOM: 'react-dom',
     }

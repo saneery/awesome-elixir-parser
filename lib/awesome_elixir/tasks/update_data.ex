@@ -9,7 +9,6 @@ defmodule AwesomeElixir.Tasks.UpdateData do
   end
 
   def init(state) do
-    update()
     schedule_work()
     {:ok, state}
   end

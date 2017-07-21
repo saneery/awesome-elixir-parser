@@ -1,1 +1,6 @@
 /* This file is for your main application css. */
+.filter {
+  display: inline;
+  margin-right: 5px;
+  cursor: pointer;
+}
