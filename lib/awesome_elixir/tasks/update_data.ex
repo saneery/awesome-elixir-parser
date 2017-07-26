@@ -26,7 +26,7 @@ defmodule AwesomeElixir.Tasks.UpdateData do
 
   def update() do
     GitHub.start
-    GitHub.get!("/repos/h4cc/awesome-elixir/readme")
+    GitHub.get!("/repos/h4cc/awesome-elixir/readme").body[:content]
     |> Base.decode64!(ignore: :whitespace)
     |> Earmark.parse
     |> ReadmeParser.get_datas

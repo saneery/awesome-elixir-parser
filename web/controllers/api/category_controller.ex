@@ -12,7 +12,7 @@ defmodule AwesomeElixir.CategoryController do
                   distinct: c.id,
                   order_by: c.name
 
-    categories = Repo.all(query) |> Repo.preload(:libraries)
+    categories = Repo.all(query) |> Repo.preload(libraries: from(l in Library, where: l.stars >= ^min_stars))
     render(conn, AwesomeElixir.CategoryView, "index.json", %{categories: categories})
   end
 
